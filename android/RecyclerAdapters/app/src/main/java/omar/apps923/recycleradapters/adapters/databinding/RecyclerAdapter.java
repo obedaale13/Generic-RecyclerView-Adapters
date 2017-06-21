@@ -33,11 +33,9 @@ public class RecyclerAdapter
     private boolean fullGridHeight;
 
 
-    private boolean fullGridWidth;
-
+ 
     private int number_of_rows;
-    private int number_of_columns;
-
+ 
 
     private OnViewHolderClick mListener;
     public Context mContext;
@@ -84,25 +82,7 @@ public class RecyclerAdapter
     public void setFullGridHeight(boolean fullGridHeight) {
         this.fullGridHeight = fullGridHeight;
     }
-
-    public boolean isFullGridWidth() {
-        return fullGridWidth;
-    }
-
-    public void setFullGridWidth(boolean fullGridWidth) {
-        this.fullGridWidth = fullGridWidth;
-    }
-
-
-
-    public int getNumber_of_columns() {
-        return number_of_columns;
-    }
-
-    public void setNumber_of_columns(int number_of_columns) {
-        this.number_of_columns = number_of_columns;
-    }
-
+ 
 
     public int getNumber_of_rows() {
         return number_of_rows;
@@ -152,33 +132,20 @@ public class RecyclerAdapter
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(layoutId, parent, false);
 
-        if((!fullGridHeight) && (!fullGridWidth))
+        if(!fullGridHeight)
         {
 
             return new RecyclerViewHolder(v, mListener);
         }
         else
         {
-            if(fullGridHeight)
-            {
+            
                 GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) v.getLayoutParams();
                 lp.height = parent.getMeasuredHeight() / number_of_rows;
                 v.setLayoutParams(lp);
 
                 return new RecyclerViewHolder(v, mListener);
-            }
-            else
-            if(fullGridWidth)
-            {
-                GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) v.getLayoutParams();
-                //lp.width = parent.getMeasuredWidth() / number_of_columns;
-                lp.width = parent.getMeasuredWidth() / number_of_columns;
-                v.setLayoutParams(lp);
-                return new RecyclerViewHolder(v, mListener);
-            }
-
-
-
+           
         }
 
         return new RecyclerViewHolder(v, mListener);
