@@ -27,21 +27,21 @@ import omar.apps923.recycleradapters.models.BasicModel;
 public class RecyclerAdapter
         extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>
         implements IonWrapper.WebServiceInterFace {
-     public ArrayList<BasicModel> items;
+    public ArrayList<BasicModel> items;
     private int layoutId;
     private RecyclerCallback bindingInterface;
     private boolean fullGridHeight;
 
 
- 
+
     private int number_of_rows;
- 
+
 
     private OnViewHolderClick mListener;
     public Context mContext;
     public RecyclerView recyclerView ;
     public WebServices webServices ;
-     public BasicModel currentObject ;
+    public BasicModel currentObject ;
     public int mainpos ;
 
     @Override
@@ -60,11 +60,11 @@ public class RecyclerAdapter
 
 
     public RecyclerAdapter(Context context,   RecyclerView recyclerView
-                             , ArrayList<BasicModel> items, int layoutId, RecyclerCallback
-            bindingInterface
+            , ArrayList<BasicModel> items, int layoutId, RecyclerCallback
+                                   bindingInterface
 
-      ,  OnViewHolderClick listener
-          ) {
+            ,  OnViewHolderClick listener
+    ) {
         this.mContext = context;
         this.recyclerView = recyclerView;
         this.items = items;
@@ -82,7 +82,7 @@ public class RecyclerAdapter
     public void setFullGridHeight(boolean fullGridHeight) {
         this.fullGridHeight = fullGridHeight;
     }
- 
+
 
     public int getNumber_of_rows() {
         return number_of_rows;
@@ -100,7 +100,7 @@ public class RecyclerAdapter
 
         ViewDataBinding binding;
         public OnViewHolderClick mListener;
-         View viewHolderView ;
+        View viewHolderView ;
         public RecyclerViewHolder(View view, OnViewHolderClick listener) {
             super(view);
             viewHolderView=view;
@@ -120,7 +120,7 @@ public class RecyclerAdapter
 
         public void bindData(BasicModel model, int position) {
             bindingInterface.bindData(   viewHolderView ,
-            binding, model,   position);
+                    binding, model,   position);
         }
 
     }
@@ -139,25 +139,22 @@ public class RecyclerAdapter
         }
         else
         {
-            
-                GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) v.getLayoutParams();
-                lp.height = parent.getMeasuredHeight() / number_of_rows;
-                v.setLayoutParams(lp);
 
-                return new RecyclerViewHolder(v, mListener);
-           
+            GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) v.getLayoutParams();
+            lp.height = parent.getMeasuredHeight() / number_of_rows;
+            v.setLayoutParams(lp);
+
+            return new RecyclerViewHolder(v, mListener);
+
         }
 
-        return new RecyclerViewHolder(v, mListener);
 
 
     }
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-       // super.onBindViewHolder(holder,position);
-
-         BasicModel item = items.get(position);
+        BasicModel item = items.get(position);
         holder.bindData(item,   position);
     }
 
@@ -179,7 +176,7 @@ public class RecyclerAdapter
     public void setItem(int position, BasicModel data) {
         items.set(position, data);
         notifyDataSetChanged();
-     }
+    }
 
     public void addItem(int position, BasicModel data) {
         items.add(position, data);
