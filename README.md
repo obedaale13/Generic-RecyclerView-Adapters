@@ -41,8 +41,7 @@ edit value of base_url_server in this file
 
 https://github.com/omar-adel/Generic-RecyclerView-Adapters/blob/master/android/RecyclerAdapters/app/src/main/java/omar/apps923/recycleradapters/helpers/WebServices.java
 
-
-
+to match your localhost ip
 
 
 
